@@ -1,0 +1,30 @@
+{
+  "name": "@clysema/generic-controller",
+  "version": "0.0.1",
+"description": "[![npm (scoped)](https://img.shields.io/npm/v/@clysema/generic-controller.svg)](https://www.npmjs.com/package/@clysema/generic-controller) [![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/@clysema/generic-controller.svg)](https://www.npmjs.com/package/@clysema/generic-controller)",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "node npm-preinstall.js",
+    "start": "node index",
+    "dev": "NODE_ENV=development node-dev index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Víctor Navarro <v.navarro@clysema.com> (https://www.clysema.com)",
+  "license": "MIT",
+  "dependencies": {
+    "@clysema/env": "^1.0.0",
+    "@clysema/jsonload": "^1.0.0",
+    "@clysema/logger": "^1.0.0",
+    "async-exit-hook": "^2.0.1",
+    "round-to": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingeniadevteam/generic-controller-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ingeniadevteam/generic-controller-app/issues"
+  },
+  "homepage": "https://github.com/ingeniadevteam/generic-controller-app#readme"
+}
