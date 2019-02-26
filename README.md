@@ -1,8 +1,5 @@
 # Generic Controller
 
-[![npm (scoped)](https://img.shields.io/npm/v/@clysema/generic-controller.svg)](https://www.npmjs.com/package/@clysema/generic-controller)
-[![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/@clysema/generic-controller.svg)](https://www.npmjs.com/package/@clysema/generic-controller)
-
 ## Description
 
 An "easy to use", configuration based, generic controller app skeleton for Linux/Systemd devices.
