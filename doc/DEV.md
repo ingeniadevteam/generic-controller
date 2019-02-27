@@ -12,19 +12,15 @@ cd generic-controller2
 
 Uncaught exception handler and exit hooks using [async-exit-hook](https://github.com/tapppi/async-exit-hook) package.
 
-# Publish npm packages
-
-Created `clysema` npm account and published some packages like:
-
-* [@clysema/jsonload](https://www.npmjs.com/package/@clysema/jsonload)
-* [@clysema/env](https://www.npmjs.com/package/@clysema/env)
-* [@clysema/logger](https://www.npmjs.com/package/@clysema/logger)
-
 # Develop a package
 
 Start [here](https://medium.freecodecamp.org/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78).
 
 Take a look at some @clysema packages.
+
+* [@clysema/jsonload](https://www.npmjs.com/package/@clysema/jsonload)
+* [@clysema/env](https://www.npmjs.com/package/@clysema/env)
+* [@clysema/logger](https://www.npmjs.com/package/@clysema/logger)
 
 ## 1. NPM init
 
@@ -96,7 +92,7 @@ module.exports = async (app) => {
 
 ## 4. Publish package or update
 
-```
+```bash
 npm version [major,minor,patch]
 npm publish .
 ```
