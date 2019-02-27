@@ -13,9 +13,9 @@
   "author": "Víctor Navarro <v.navarro@clysema.com> (https://www.clysema.com)",
   "license": "MIT",
   "dependencies": {
-    "@clysema/env": "^1.0.0",
-    "@clysema/jsonload": "^1.0.0",
-    "@clysema/logger": "^1.0.0",
+    "@clysema/env": "^1.0.2",
+    "@clysema/jsonload": "^1.0.2",
+    "@clysema/logger": "^1.0.2",
     "async-exit-hook": "^2.0.1",
     "round-to": "^3.0.0"
   },
