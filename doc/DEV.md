@@ -1,3 +1,5 @@
+(development notes)
+
 # Init the node project
 
 ```
@@ -12,9 +14,7 @@ Uncaught exception handler and exit hooks using [async-exit-hook](https://github
 
 # Publish npm packages
 
-https://medium.freecodecamp.org/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78
-
-Created `clysema` npm account and publish some packages like:
+Created `clysema` npm account and published some packages like:
 
 * [@clysema/jsonload](https://www.npmjs.com/package/@clysema/jsonload)
 * [@clysema/env](https://www.npmjs.com/package/@clysema/env)
@@ -22,23 +22,30 @@ Created `clysema` npm account and publish some packages like:
 
 # Develop a package
 
-## 1. Choose a name
+Start [here](https://medium.freecodecamp.org/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78).
 
-It should be `@clysema/package_name`.
+Take a look at some @clysema packages.
+
+## 1. NPM init
+
+Read [NPM.md](./NPM.md), create a fancy named folder and run `npm init` inside.
+
+* Choose a package name like `@clysema/package_name` or whatever
+* Write a description
+* Setup the repository field when you have it
 
 ## 2. Write the validation file
 
-The config file for the package should be:
-
-config/package_name.json.
+The config file for the package will be something like:
 ```json
 {
   "param1": 1,
   "param2": 2
 }
 ```
+(This config will be placed as the package_name.json file in the config directory of the app)
 
-This file should be validated using joi:
+This config should be validated using joi:
 
 package_name/validation.js
 ```js
@@ -86,7 +93,15 @@ module.exports = async (app) => {
 };
 ```
 
-## 4. Use the module in the app
+
+## 4. Publish package or update
+
+```
+npm version [major,minor,patch]
+npm publish .
+```
+
+## 5. Use the module in the app
 
 app/loop.js
 ```js
