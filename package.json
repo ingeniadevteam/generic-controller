@@ -7,6 +7,7 @@
     "preinstall": "node npm-preinstall.js",
     "start": "node index",
     "dev": "NODE_ENV=development node index",
+    "node-dev": "NODE_ENV=development node-dev index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
