@@ -16,7 +16,7 @@
   "dependencies": {
     "@clysema/env": "^0.1.0",
     "@clysema/jsonload": "0.0.1",
-    "@clysema/logger": "0.0.2",
+    "@clysema/logger": "0.0.3",
     "async-exit-hook": "^2.0.1",
     "round-to": "^3.0.0"
   },
