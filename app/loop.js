@@ -8,6 +8,7 @@ const round = require('round-to');
 const concurrent = require('./examples/concurrent');
 const serial = require('./examples/serial');
 const meteor = require('./examples/meteor');
+const http = require('./examples/http');
 
 module.exports = async (app) => {
   let t, sample_rate, mils, nextRun;
@@ -24,15 +25,8 @@ module.exports = async (app) => {
 
     // the http (http/rest) module
     if (app.config.http) {
-      // (simply setup app  object)
-      app[app.config.http.app_vars] = { date: new Date() };
-
-      app.modules.logger.log("debug",
-        `HTTP server http://localhost:${app.config.http.port}`);
-      if (app.config.http.rest) {
-        app.modules.logger.log("debug",
-          `REST endpoint http://localhost:${app.config.http.port}/${app.config.http.app_vars}`);
-      }
+      try { await http(app); }
+      catch (e) { app.modules.logger.log("error", "http", e); }
     }
 
     // meteor module
@@ -47,6 +41,7 @@ module.exports = async (app) => {
 
     try { await serial(app); }
     catch (e) { app.modules.logger.log("error", "serial", e); }
+
 
     // setup next run
     t = process.hrtime(t);
