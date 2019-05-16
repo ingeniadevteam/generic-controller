@@ -20,6 +20,11 @@ module.exports = async (app) => {
 
   app.modules.logger.log("info", "app bootstrap");
 
+  // load the app config
+  try {
+    app.config.app = await jsonload(`${app.path}/config/app.json`) || {};
+  } catch (e) { app.modules.logger.log("warn", "config/app.json not found"); }
+
   // get a list of configured modules
   const configFiles = await fs.readdirSync(`${app.path}/config`);
 
@@ -37,11 +42,6 @@ module.exports = async (app) => {
       app.modules.logger.log('info', 'node-red config preset');
       return;
     };
-
-    try {
-      // load the app config
-      app.config.app = await jsonload(`${app.path}/config/app.json`) || {};
-    } catch (e) { app.modules.logger.log("warn", "config/app.json not found"); }
 
     // setup the new module
     try {
