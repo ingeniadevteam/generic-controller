@@ -1,11 +1,25 @@
 /**
  * Install and load the configured modules
- * @module init
+ * @module bootstrap
  */
 
 const fs = require("fs");
 
+const env = require('@clysema/env');
+const jsonload = require('@clysema/jsonload');
+const logger = require('@clysema/logger');
+
 module.exports = async (app) => {
+  // setup app.config object
+  app.config = {};
+  // setup default modules
+  app.modules = {};
+  app.modules.env = await env();
+  app.modules.jsonload = await jsonload;
+  app.modules.logger = await logger(app);
+
+  app.modules.logger.log("info", "app bootstrap");
+
   // get a list of configured modules
   const configFiles = await fs.readdirSync(`${app.path}/config`);
 
@@ -24,20 +38,10 @@ module.exports = async (app) => {
       return;
     };
 
-    // try to get the file
-    let configObject;
     try {
-      // load config
-      const path = `${app.path}/config/${module_name}.json`;
-      if (fs.existsSync(path)) {
-        // load the config using the app.modules.jsonload modules
-        configObject = await app.modules.jsonload(path);
-      } else {
-        configObject = {};
-      }
-    } catch (e) {
-      throw e;
-    }
+      // load the app config
+      app.config.app = await jsonload(`${app.path}/config/app.json`) || {};
+    } catch (e) { app.modules.logger.log("warn", "config/app.json not found"); }
 
     // setup the new module
     try {

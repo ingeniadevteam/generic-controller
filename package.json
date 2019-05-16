@@ -1,7 +1,7 @@
 {
   "name": "generic-controller",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A node control App",
   "main": "index.js",
   "scripts": {
     "preinstall": "node npm-preinstall.js",

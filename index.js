@@ -4,7 +4,14 @@
  */
 
 const exitHook = require('async-exit-hook');
+const bootstrap = require('./bootstrap');
 const app = require('./app');
+
+// setup the app.path
+app.path = process.cwd();
+
+// setup the exitHook
+app.exitHook = exitHook;
 
 // setup the process title
 process.title = process.env.npm_package_name || "controller";
@@ -18,7 +25,7 @@ exitHook.uncaughtExceptionHandler(err => {
 // setup an exit hook to call app.stop()
 exitHook(() => {
   try {
-    app.stop();
+    app.stop(app);
   } catch (e) {
     console.error(`${process.title} stop`, e);
   }
@@ -28,15 +35,22 @@ exitHook(() => {
 (
   async () => {
     try {
-      // call init with the current dir as root path reference
-      await app.init(process.cwd(), exitHook);
+      // bootstrap the app
+      await bootstrap(app);
+    } catch (e) {
+      console.error(`${process.title} bootstrap`, e);
+      process.exit(1);
+    }
+    try {
+      // call init
+      await app.init(app);
     } catch (e) {
       console.error(`${process.title} init`, e);
       process.exit(1);
     }
     try {
       // call start
-      await app.start();
+      await app.start(app);
     } catch (e) {
       console.error(`${process.title} app`, e);
     }
