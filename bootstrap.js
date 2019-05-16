@@ -37,9 +37,9 @@ module.exports = async (app) => {
     if (extension !== "json") return;
 
     // exclude logger and node-red config
-    if (module_name === 'logger' || !module_name) return;
+    if (module_name === 'logger' || module_name === 'app' || !module_name) return;
     if (module_name === 'node-red') {
-      app.modules.logger.log('info', 'node-red config preset');
+      app.modules.logger.log('info', 'node-red config present');
       return;
     };
 
