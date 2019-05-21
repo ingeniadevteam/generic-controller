@@ -15,7 +15,8 @@ const configFiles = fs.readdirSync(config).map( (file) => {
 });
 
 for (let file of configFiles) {
-  if (file.name === 'logger' || file.name === 'node-red' || file.ext !== "json")
+  if (file.name === 'logger' || file.name === 'node-red'
+      || file.name === 'app' || file.ext !== "json")
     continue;
   const result = cp.spawnSync('npm', ['install', `@clysema/${file.name}`]);
   if (result.status !== 0) {
